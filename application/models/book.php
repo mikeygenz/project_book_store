@@ -10,7 +10,7 @@
     public $created ;
     public $description ;
 
-    public function book_construct($id, $author_id, $publisher_id, $price, $quantity,
+    public function bookConstruct($id, $author_id, $publisher_id, $price, $quantity,
                                     $type, $name, $created, $description) {
         $this->id = $id;
         $this->author_id = $author_id;
@@ -21,5 +21,19 @@
         $this->name = $name ;
         $this->created = $created;
         $this->description = $description;
+    }
+  }
+  
+  class ModelBook {
+    public function bookConstruct(){}
+    
+    public function createBook(){
+
+    }
+    public function updateBook(){
+
+    }
+    public function deleteBook(){
+
     }
   }

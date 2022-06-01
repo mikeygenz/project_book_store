@@ -18,13 +18,16 @@
 
 <body>
 <div class="list-functions">           
-            <a href="dormitory.php">Author</a>
-            <a href="register.php">Publisher</a>
-            <a href=#>Book</a>
-            <a href=#>Tra cứu</a>
-            <a href=#>Test</a>
+            <a href="authorView.php">Author</a>
+            <a href="publisherView.php">Publisher</a>
+            <a href="bookView.php">Book</a>
         </div>
-    <div class="view_dorm">
+        <div>
+            <form action="../views/addAuthor.php" method="post">
+                <button type="submit" >Add Author</button>
+            </form>
+        </div>
+    <div class="view-author">
         <table>
             <tr>
                 <th>Tên tác giả </th>

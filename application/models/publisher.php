@@ -8,7 +8,7 @@
         public $created ;
         public $modified ;
 
-        public function publisher_construct($id, $name, $address, $email, $nationality,
+        public function publisherConstruct($id, $name, $address, $email, $nationality,
                                             $created, $modified){
             $this->id = $id;
             $this->name= $name;
@@ -19,5 +19,24 @@
             $this->modified = $modified;
         }
     }
+
+    class ModelPublisher {
+        public function publishConstruct(){}
+        public function getPublisher(){
+            $connect = new mysqli("127.0.0.1", "root", "", "book_store");
+            $result = $connect->query("SELECT * FROM PUBLISHER");
+            mysqli_close($connect);
+            return $result;
+        }
+        public function createPublisher(){
+    
+        }
+        public function updatePublisher(){
+    
+        }
+        public function deletePublisher(){
+          
+        }
+      }
 
 ?>

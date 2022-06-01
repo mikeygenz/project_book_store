@@ -1,34 +1,36 @@
 <?php
     include_once("../models/book.php");
+
     class ControllerBook {
         public function invoke(){
-            $mDormitory = new M_Dormitory;
-            $dormitoryList = $mDormitory->getAllDormitory();
-            return $dormitoryList;
+            $modelBook = new ModelBook;
         }
-        public function createDorm($name_dormitory, $rooms, $beds, $price, $note){
-            $mDormitory = new M_Dormitory;
-            $result =$mDormitory->createDormitory($name_dormitory, $rooms, $beds, $price, $note);
-            return $result;
+        public function createBook(){
+            $modelBook = new ModelBook;
+            $result = $modelBook->createBook();
         }
-        public function deleteDorm($id_dormitory){
-            $mDormitory = new M_Dormitory;
-            $result =$mDormitory->deleteDormitory($id_dormitory);
-            return $result;
+        public function deleteBook(){
+            $modelBook = new ModelBook;
+            $result = $modelBook->deleteBook();
+        }
+        public function updateBook(){
+            $modelBook = new ModelBook;
+            $result = $modelBook->updateBook();
         }
     }
+
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        if(isset($_POST["createDormitory"])){
-            $c_Dormitory = new C_Dormitory;
-            $result =$c_Dormitory->createDorm( $_POST["name_dormitory"], $_POST["rooms"], $_POST["beds"], $_POST["price"], $_POST["note"]);
-            header("Location: ../views/dormitory.php");
-            exit;
+        if(isset($_POST["createBook"])){
+            $controlBook = new ControllerBook;
+            $result =$controlBook->createBook();
         }
-        if(isset($_POST["deleteDormitory"])){
-            $c_Dormitory = new C_Dormitory;
-            $result =$c_Dormitory->deleteDorm( $_POST["id_dormitory"]);
-            header("Location: ../views/dormitory.php");
-            exit;
+        if(isset($_POST["deleteBook"])){
+            $controlBook = new ControllerBook;
+            $result =$controlBook->deleteBook();
+        }
+        if(isset($_POST["updateBook"])){
+            $controlBook = new ControllerBook;
+            $result =$controlBook->updateBook();
         }
     }
 ?>
