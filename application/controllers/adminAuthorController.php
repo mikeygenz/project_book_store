@@ -1,22 +1,27 @@
 <?php
     include_once("../models/author.php");
     class ControllerAuthor {
-        public function createAuthor($name, $address, $email){
+        public function createAuthor($name, $address, $email, $nationality){
             $modelAuthor = new ModelAuthor;
-            $result = $modelAuthor->createAuthor($name, $address, $email);
+            $result = $modelAuthor->createAuthor($name, $address, $email, $nationality);
             return $result;
         }
-        public function deleteAuthor() {
+        public function deleteAuthor($id) {
             $modelAuthor = new ModelAuthor;
-            $result = $modelAuthor->deleteAuthor();
+            $result = $modelAuthor->deleteAuthor($id);
         }
-        public function updateAuthor() {
+        public function updateAuthor($id, $name, $address, $email, $nationality) {
             $modelAuthor = new ModelAuthor;
-            $result = $modelAuthor->updateAuthor();
+            $result = $modelAuthor->updateAuthor($id, $name, $address, $email, $nationality);
         }
         public function getAuthor() {
             $modelAuthor = new ModelAuthor;
             $result = $modelAuthor->getAuthor();
+            return $result;
+        }
+        public function getAuthorDetail($id) {
+            $modelAuthor = new ModelAuthor;
+            $result = $modelAuthor->getAuthorDetail($id);
             return $result;
         }
         public function invoke(){
@@ -32,17 +37,21 @@
         }
         if(isset($_POST["createAuthor"])){
             $controlAuthor = new ControllerAuthor;
-            $result =$controlAuthor->createAuthor($_POST["name"], $_POST["address"], $_POST["email"]);
+            $result =$controlAuthor->createAuthor($_POST["name"], $_POST["address"], $_POST["email"], $_POST["nationality"]);
             header("Location: ../views/authorView.php");
             exit;
         }
         if(isset($_POST["deleteAuthor"])){
             $controlAuthor = new ControllerAuthor;
-            $result =$controlAuthor->deleteAuthor();
+            $result =$controlAuthor->deleteAuthor($_POST["id"]);
+            header("Location: ../views/authorView.php");
+            exit;
         }
         if(isset($_POST["updateAuthor"])){
             $controlAuthor = new ControllerAuthor;
-            $result =$controlAuthor->updateAuthor();
+            $result =$controlAuthor->updateAuthor($_POST["id"], $_POST["name"], $_POST["address"], $_POST["email"], $_POST["nationality"]);
+            header("Location: ../views/authorView.php");
+            exit;
         }
+
     }
-?>

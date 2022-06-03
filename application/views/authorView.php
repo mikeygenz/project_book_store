@@ -23,7 +23,7 @@
             <a href="bookView.php">Book</a>
         </div>
         <div>
-            <form action="../views/addAuthor.php" method="post">
+            <form action="../views/authorAdd.php" method="post">
                 <button type="submit" >Add Author</button>
             </form>
         </div>
@@ -33,8 +33,9 @@
                 <th>Tên tác giả </th>
                 <th>Địa chỉ</th>
                 <th>Địa chỉ email</th>
-                <th>Số điện thoại</th>
+                <th>Quoc tich</th>
                 <th>Ngày tạo</th>
+                <th>???</th>
                 <th>???</th>
             </tr>
             <?php
@@ -49,9 +50,15 @@
                         <td><?php echo $row["name"]; ?></td>
                         <td><?php echo $row["address"]; ?></td>
                         <td><?php echo $row["email"]; ?></td>
-                        <td><?php echo $row["phone"]; ?></td>
+                        <td><?php echo $row["nationality"]; ?></td>
                         <td><?php echo $row["created"]; ?></td>
                         <td><?php echo $row["modified"]; ?></td>
+                        <td>
+                            <form action="../views/authorEdit.php" method="post">
+                                <input style="display:none" type="text" id="editAuthor" name="editAuthor" value="<?php echo $row["id"]; ?>">
+                                <button type="submit"> Edit </button>
+                            </form>
+                        </td>
                     </tr>
             <?php
                     $i++;

@@ -22,12 +22,8 @@
             <a href="publisherView.php">Publisher</a>
             <a href="bookView.php">Book</a>
         </div>
-        <div>
-            <form action="../views/addAuthor.php">
-                <button type="submit" >Add Author</button>
-            </form>
-        </div>
-    <div class="view-author">
+
+    <div class="add-author">
         <form action="../controllers/adminAuthorController.php" method="post">
             <div>
                 <label for="name">Name: </label>
@@ -52,6 +48,14 @@
                     type="text"
                     id="email"
                     name="email"
+                    />
+            </div>
+            <div>
+                <label for="email">Nationality: </label>
+                <input 
+                    type="text"
+                    id="nationality"
+                    name="nationality"
                     />
             </div>
             <button type="submit" name="createAuthor">Save</button>
