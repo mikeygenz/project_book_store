@@ -17,48 +17,10 @@
 </head>
 
 <body>
-<div class="list-functions">           
-            <a href="dormitory.php">Author</a>
-            <a href="register.php">Publisher</a>
-            <a href=#>Book</a>
-            <a href=#>Tra cứu</a>
-            <a href=#>Test</a>
-        </div>
-    <div class="view_dorm">
-        <table>
-            <tr>
-                <th>Tên tác giả </th>
-                <th>Địa chỉ</th>
-                <th>Địa chỉ email</th>
-                <th>Số điện thoại</th>
-                <th>Ngày tạo</th>
-                <th>???</th>
-            </tr>
-            <?php
-            include_once("../controllers/adminAuthorController.php");
-            $controlAuthor = new ControllerAuthor;
-            $authorList = $controlAuthor->getAuthor();
-            if ($authorList->num_rows > 0) {
-                $i = 0;
-                while ($row = $authorList->fetch_assoc()) {
-            ?>
-                    <tr>
-                        <td><?php echo $row["name"]; ?></td>
-                        <td><?php echo $row["address"]; ?></td>
-                        <td><?php echo $row["email"]; ?></td>
-                        <td><?php echo $row["phone"]; ?></td>
-                        <td><?php echo $row["created"]; ?></td>
-                        <td><?php echo $row["modified"]; ?></td>
-                    </tr>
-            <?php
-                    $i++;
-                }
-            } else {
-                echo "No result found";
-            }
-            ?>
+    <div class="list-functions">
+        <a href="authorView.php">Author</a>
+        <a href="publisherView.php">Publisher</a>
 
-        </table>
     </div>
 </body>
 

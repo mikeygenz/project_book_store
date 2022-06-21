@@ -26,14 +26,37 @@
   
   class ModelBook {
     public function bookConstruct(){}
-    
-    public function createBook(){
-
-    }
-    public function updateBook(){
-
-    }
-    public function deleteBook(){
-
-    }
+    public function getBook(){
+      $connect = new mysqli("127.0.0.1", "root", "", "book_store");
+      $result = $connect->query("SELECT * FROM BOOK");
+      mysqli_close($connect);
+      return $result;
+  }
+  public function getBookDetail($id){
+      $connect = new mysqli("127.0.0.1", "root", "", "book_store");
+      $result = $connect->query("SELECT * FROM BOOK WHERE BOOK.id='$id'");
+      mysqli_close($connect);
+      return $result;
+  }
+  public function createBook($name, $author_id, $publisher_id, $type, $descreption, $price,$quanntity, $created){
+      $connect =new mysqli("127.0.0.1", "root", "", "book_store");
+      $result = $connect->query("INSERT INTO BOOK(name, author_id, publisher_id, type, description, price, quantity, created) VALUE('$name', '$author_id', '$publisher_id', '$type', '$descreption', '$price','$quanntity', '$created')");
+      mysqli_close($connect);
+      return $result;
+  }
+  public function updateBook($id, $name, $author_id, $publisher_id, $type, $descreption, $price,$quanntity, $created){
+      $connect =new mysqli("127.0.0.1", "root", "", "book_store");
+      $result = $connect->query("UPDATE BOOK SET BOOK.name='$name', BOOK.author_id='$author_id', BOOK.publisher_id='$publisher_id',
+                                BOOK.type='$type', BOOK.descreption = '$descreption', BOOK.price = '$price',
+                                BOOk.quantity = '$quanntity', BOOK.created = '$created'
+                                WHERE BOOK.id='$id'");
+      mysqli_close($connect);
+      return $result;
+  }
+  public function deleteBook($id){
+      $connect =new mysqli("127.0.0.1", "root", "", "book_store");
+      $result = $connect->query("DELETE FROM BOOK WHERE BOOK.id='$id'");
+      mysqli_close($connect);
+      return $result;     
+  }
   }
